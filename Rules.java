@@ -1,3 +1,7 @@
+import java.util.*;
+
+
+
 class Rules {
   // On veut ici les regles du jeu pour chaque type d'action
 
@@ -11,17 +15,17 @@ class Rules {
   // Pas deux cartes de même nom
   // Chainages
 
-  void dealActions();
+  void dealActions(){};
 
-  boolean doesChain(); // Faire une structure speciale ?? Oui je pense
+  boolean doesChain(){}; // Faire une structure speciale ?? Oui je pense
 
   // Verifications de coûts (en checkant les chainages)
-  boolean freeCost();
+  boolean freeCost(){};
 
-  void drawWonders(); // Dans Game ?
+  void drawWonders(){}; // Dans Game ?
 
-  BorrowedAction toBorrow();
+  BorrowedAction toBorrow(){};
 
-  private boolean checkNeighbours();
+  private boolean checkNeighbours(){};
 
 }
