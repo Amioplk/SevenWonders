@@ -16,6 +16,15 @@ class Game {
   // Placement des joueurs
   LinkedList<Player> players; // Attention !  HashMap ne garantit pas d'ordre alors que TreeMap oui
 
+  static shareHands(Iterator it) {
+
+    Player player = it.next();
+    LinkedList<String> tmp = player.hand.clone();
+    player.hand = hand.clone();
+    hand = tmp.clone();
+
+  }
+
   void draft() { // A tester
 
     Iterator<Player> it; //Expression ternaire !
@@ -25,12 +34,9 @@ class Game {
       it = this.players.descendingIterator();
 
     LinkedList<String> hand = this.players.getFirst().hand;
-    while(it.hasNext()){
+    while(it.hasNext()) {
 
-      player = it.next();
-      LinkedList<String> tmp = player.hand.clone();
-      player.hand = hand.clone();
-      hand = tmp.clone();
+      shareHands(it);
 
     }
 

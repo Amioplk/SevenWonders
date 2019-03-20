@@ -28,6 +28,6 @@ class Player {
     }
   }
 
-  Action use(){return}; //return Action ?
+  Action use(){return new ThrownAction();} //return Action ?
 
   }
