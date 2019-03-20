@@ -51,7 +51,7 @@ class PermAction extends ThrownAction {
 
 class FinalAction extends ThrownAction {
 
-  HashMap<String, Integer> choices; //?
+  HashMap<String, Integer> choices; //Choix final de science par exemple
 
 }
 

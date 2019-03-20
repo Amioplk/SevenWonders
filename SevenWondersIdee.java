@@ -12,8 +12,6 @@ On a 4 facteurs qui influent sur notre modelisation du jeu:
   - Regles
 */
 
-
-
 /*public class Pair<L,R> {
 
   private final L left;

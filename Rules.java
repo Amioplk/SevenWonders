@@ -14,6 +14,9 @@ class Rules {
   // Initialisation d'une partie, distribution des cartes (actions) et des merveilles
   // Pas deux cartes de même nom
   // Chainages
+  //Mappage des merveilles selon les extentions
+
+  Object chain;
 
   void dealActions(){};
 

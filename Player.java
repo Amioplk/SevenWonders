@@ -11,7 +11,7 @@ class Player {
   // Etat des merveilles
   int full; // On fait un max qu'on décrémente
   // Nom de la merveilles
-  String wonder; //Faire une classe Wonder ? --> enmène full avec lui  --> fullWonder à modifier
+  String wonder;
   // Les cartes en main (ne pas faire de LinkedList !)
   LinkedList<String> hand; // Les cartes sont des Strings et on crée des actions dans les règles
 
