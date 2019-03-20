@@ -6,29 +6,35 @@ class Rules {
   // On veut ici les regles du jeu pour chaque type d'action
 
   // Les emprunts chez les autres, savoir s'ils ont ce qu'il faut et si l'argent est suffisant, regarder les eventuelles reductions.
-  // La merveille est-elle deja pleine ? Initialisation des merveilles
-  // Les coûts des cartes et des étages de merveille
-  // Les verifications pour les chainages
+  // La merveille est-elle deja pleine ? -> deja dans Player... Initialisation des merveilles
+  // Les coûts des cartes et des ETAGES DE MERVEILLE
   // Ressources liées (questionner le Game qui agit comme une base de données)
   // Si c'est la fin de l'ère ou pas --> endEra dans Game
   // Initialisation d'une partie, distribution des cartes (actions) et des merveilles
-  // Pas deux cartes de même nom
+
   // Chainages
-  //Mappage des merveilles selon les extentions
-
   Object chain;
+  // Mappage des merveilles selon les extentions
+  HashMap<String, Set<Integer>> wondersAvailable; // --> Game ?
+  //Mapping des actions dispos dans les merveilles
+  HashMap<String, ArrayList<String>> wonders; // --> Game ?
+  //Mapping des actions par nom de carte ?
 
-  void dealActions(){};
+  static void dealAction(){};
 
-  boolean doesChain(){}; // Faire une structure speciale ?? Oui je pense
-
-  // Verifications de coûts (en checkant les chainages)
-  boolean freeCost(){};
+  // Les verifications pour les chainages
+  boolean doesChain() { // Faire une structure speciale ?? Oui je pense
+    //Itérer (ou boot) sur chain et itérer sur ses enfants
+    return true;
+  };
 
   void drawWonders(){}; // Dans Game ?
 
-  BorrowedAction toBorrow(){};
+  BorrowedAction toBorrow(){return new BorrowedAction();};
 
-  private boolean checkNeighbours(){};
+  private boolean checkNeighbours(){return true;};
+
+  // Pas deux cartes de même nom
+  boolean checkSameCard() {return true;}; // Dans Player ?
 
 }

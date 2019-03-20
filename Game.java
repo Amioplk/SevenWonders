@@ -7,6 +7,8 @@ import java.util.*;
 class Game {
   //On met ici l'etat du jeu en general
 
+ // Comptage des points
+
   // Ere
   int era;
   // Defausse (Collection)
@@ -16,19 +18,22 @@ class Game {
   // Placement des joueurs
   LinkedList<Player> players; // Attention !  HashMap ne garantit pas d'ordre alors que TreeMap oui
 
-  static shareHands(Iterator it) {
-
-    Player player = it.next();
-    LinkedList<String> tmp = player.hand.clone();
-    player.hand = hand.clone();
-    hand = tmp.clone();
+  static void exchangeHands(Iterator it, LinkedList<String> hand) { //Sous-optimal !!!
+    //Echange les mains de deux joueurs --> mettre limite si Iterator.next() pas un Player
+    Player player = (Player)it.next();
+    LinkedList<String> tmp = new LinkedList<>();
+    tmp.addAll(player.hand);
+    player.hand.clear();
+    player.hand.addAll(player.hand);
+    hand.clear();
+    hand.addAll(tmp);
 
   }
 
   void draft() { // A tester
 
     Iterator<Player> it; //Expression ternaire !
-    if(era == 1 || era == 3)
+    if(era%2 == 1)
       it = this.players.iterator();
     else
       it = this.players.descendingIterator();
@@ -36,11 +41,12 @@ class Game {
     LinkedList<String> hand = this.players.getFirst().hand;
     while(it.hasNext()) {
 
-      shareHands(it);
+      exchangeHands(it, hand);
 
     }
 
-    players.getFirst().hand = hand.clone();
+    players.getFirst().hand.clear();
+    players.getFirst().hand.addAll(hand);
   }
 
   boolean endEra() { // A tester

@@ -7,7 +7,7 @@ class Player {
 
   String name;
   // Les cartes de ressources(+military) + les cartes déjà posées
-  HashMap<String, Integer> ressources; //Ne doit-on pas garder plutôt le nom des cartes posées ?
+  Set cards;
   // Etat des merveilles
   int full; // On fait un max qu'on décrémente
   // Nom de la merveilles
