@@ -22,7 +22,9 @@ class Player {
   Action use(){return new ThrownAction();}
   
   @SuppressWarnings("unused")
-  private boolean checkNeighbours(){return true;};
+private boolean checkNeighbours(){return false;}
+ 
+  boolean checkRessources() {return false;}
   
   // Pas deux cartes de meme nom
   boolean checkSameCard(Card newCard) {

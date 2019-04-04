@@ -2,7 +2,7 @@ class DiscardAction extends InstantAction {
 	
 	// Action de défausse
 	
-	public void apply() {
-		
+	public boolean apply() {
+		return false;
 	}
 }

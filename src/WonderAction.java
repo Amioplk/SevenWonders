@@ -5,10 +5,13 @@ class WonderAction extends InstantAction {
 	/**
 	 * Incomplet
 	 */
-	public void apply() {
+	public boolean apply() { // A tester
 		Wonder wonder = user.wonder;
-		//checkRessources
-		wonder.full--; //wonderfull lol
+		if(!this.user.checkRessources()) return false;
+		// Il manque une étape je pense
+		--wonder.full; //wonderfull lol
+	
+		return true;
 	}
 	
 }
