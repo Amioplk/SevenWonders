@@ -24,19 +24,19 @@ public class Game {
         y.setHand(xCards);
     }
 
-    private static void swapHands(LinkedList<Player> players, boolean ascendingOrder) {
+    private static void swapHands(List<Player> players, boolean ascendingOrder) {
         if (ascendingOrder) {
-            List<Card> initialHand = players.getFirst().getHand();
+            List<Card> initialHand = players.get(0).getHand();
             for (int i = 0; i < players.size() - 1; i++) {
                 swapHands(players.get(i), players.get(i + 1));
             }
-            players.getLast().setHand(initialHand);
+            players.get(players.size() - 1).setHand(initialHand);
         } else {
-            List<Card> initialHand = players.getLast().getHand();
+            List<Card> initialHand = players.get(players.size() - 1).getHand();
             for (int i = players.size(); i > 0; i--) {
                 swapHands(players.get(i), players.get(i - 1));
             }
-            players.getFirst().setHand(initialHand);
+            players.get(0).setHand(initialHand);
         }
     }
 
