@@ -30,4 +30,8 @@ public class Card {
 		this.type = type;
 	};
 	
+	public boolean equals(Card newCard) {
+		return (this.name == newCard.name);
+	}
+	
 }

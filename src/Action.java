@@ -7,7 +7,6 @@ abstract class Action {
   // Une action est la pose d'une carte qui possede un effet, PAS le fait de payer les couts par exemple !
 
   Player user;
-  String what; // Nom de la carte !
   // type, couleur
 
   // Defausser
@@ -16,9 +15,8 @@ abstract class Action {
 
   public Action(){} //Action par défaut ? --> défausser | Player par défaut ?
 
-  public Action(Player user, String card){
+  public Action(Player user){
     this.user = user;
-    this.what = card;
   }
 
 }
@@ -35,7 +33,7 @@ class ThrownAction extends Action {
 
 class InstantAction extends ThrownAction {
 
-  int gain; // Peut être négatif, peut concerner les ressources
+  int gain; // Peut etre negatif
 
 }
 
@@ -62,4 +60,32 @@ class BorrowedAction extends Action { //extends action ?
   int many;
   Player who;
 
+}
+
+
+
+class WonderAction extends ThrownAction {
+	
+	// Mettre la carte sur un etage de merveille
+	
+	/**
+	 * Incomplet
+	 */
+	public void apply() {
+		Wonder wonder = user.wonder;
+		//checkRessources
+		wonder.full--;
+	}
+	
+}
+
+
+
+class Discard extends ThrownAction {
+	
+	// Action de d�fausse
+	
+	public void apply() {
+		
+	}
 }
