@@ -1,0 +1,14 @@
+/Action.class
+/BorrowedAction.class
+/FinalAction.class
+/Game.class
+/InstantAction.class
+/PermAction.class
+/Player.class
+/Rules.class
+/ThrownAction.class
+/bin/
+/target/
+*.prefs
+.classpath
+.project
