@@ -8,10 +8,11 @@ class Player {
   String name;
   // Les cartes deja  posees
   Set<Card> cards;
-  // Nom de la merveilles
+  // Merveille dont le joueur dispose
   Wonder wonder;
-  // Les cartes en main (ne pas faire de LinkedList !)
-  ArrayList<Card> hand; // Les cartes sont des Strings
+  // Les cartes en main
+  ArrayList<Card> hand;
+  // Les actions permanentes dont le joueur dispose
 
   public Player(String name){
     this.name = name;
@@ -21,9 +22,9 @@ class Player {
   Action use(){return new ThrownAction();}
   
   @SuppressWarnings("unused")
-private boolean checkNeighbours(){return true;};
+  private boolean checkNeighbours(){return true;};
   
-  // Pas deux cartes de mÃªme nom
+  // Pas deux cartes de meme nom
   boolean checkSameCard(Card newCard) {
 	  for(Card card : cards) {
 		  if(card.equals(newCard)) return true;

@@ -15,6 +15,8 @@ class Game {
   List<String> ext;
   // Placement des joueurs
   LinkedList<Player> players;
+  // Référentiel
+  Frame frame;
 
   static void exchangeHands(Iterator<Player> it, ArrayList<Card> hand) { //Sous-optimal !!!
     //Echange les mains de deux joueurs --> mettre limite si Iterator.next() pas un Player
@@ -58,7 +60,7 @@ class Game {
   }
   
   void allocateCards() {
-	  
+	  // Distribuer les cartes
   }
   
   int countPoints(Player player) {
