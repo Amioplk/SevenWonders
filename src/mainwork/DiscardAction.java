@@ -1,3 +1,4 @@
+package mainwork;
 class DiscardAction extends InstantAction {
 	
 	// Action de défausse

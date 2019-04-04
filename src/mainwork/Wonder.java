@@ -1,3 +1,4 @@
+package mainwork;
 
 public class Wonder {
 	

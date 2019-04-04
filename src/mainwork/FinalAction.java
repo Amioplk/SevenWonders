@@ -1,3 +1,4 @@
+package mainwork;
 import java.util.HashMap;
 
 class FinalAction extends Action {

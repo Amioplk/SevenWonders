@@ -1,3 +1,4 @@
+package mainwork;
 import java.util.*;
 
 // Type de jeu ? Chacun son tour ? En reseau ?

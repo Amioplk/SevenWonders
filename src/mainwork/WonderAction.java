@@ -1,3 +1,5 @@
+package mainwork;
+
 class WonderAction extends InstantAction {
 	
 	// Mettre la carte sur un etage de merveille
