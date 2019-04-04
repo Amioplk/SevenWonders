@@ -19,36 +19,46 @@ class Game {
   // Référentiel
   Frame frame;
 
-  static void exchangeHands(Iterator<Player> it, ArrayList<Card> hand) { //Sous-optimal !!!
+  static void swapHands(Player x, Player y) { // A tester
+	  
+	  ArrayList<Card> xCards = x.getHand();
+	  x.setHand(y.getHand());
+	  y.setHand(xCards);
+  }
+  
+  static Player swapHands(Iterator<Player> it, Player player) { // A tester
     //Echange les mains de deux joueurs --> mettre limite si Iterator.next() pas un Player
-    Player player = (Player)it.next();
-    ArrayList<Card> tmp = new ArrayList<>();
-    tmp.addAll(player.hand);
-    player.hand.clear();
-    player.hand.addAll(player.hand);
-    hand.clear();
-    hand.addAll(tmp);
 
+	  if(!it.hasNext()) {
+		  return player;
+	  }
+	  
+	  Player newPlayer = it.next();
+	  swapHands(player, newPlayer);
+	  
+	  return swapHands(it, newPlayer);
+	  
   }
 
   void draft() { // A tester
 
-    Iterator<Player> it = (era%1==0) ? this.players.iterator() : this.players.descendingIterator();
+    Iterator<Player> it = (era % 2 == 1) ? this.players.iterator() : this.players.descendingIterator();
 
-    ArrayList<Card> hand = this.players.getFirst().hand;
+    Player player = this.players.getFirst();
+    Player lastPlayer = new Player();
     while(it.hasNext()) {
 
-      exchangeHands(it, hand);
+      lastPlayer = swapHands(it, player);
 
     }
 
-    players.getFirst().hand.clear();
-    players.getFirst().hand.addAll(hand);
+    swapHands(player, lastPlayer);
+    
   }
 
   boolean endEra() { // A tester
 
-    return( players.getFirst().hand.size() <= 1 );
+    return( players.getFirst().getHand().size() <= 1 );
     
   }
 

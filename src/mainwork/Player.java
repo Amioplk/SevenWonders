@@ -12,7 +12,7 @@ class Player {
   // Merveille dont le joueur dispose
   Wonder wonder;
   // Les cartes en main
-  ArrayList<Card> hand;
+  private ArrayList<Card> hand;
   // Les actions permanentes dont le joueur dispose
 
   public Player(String name){
@@ -20,7 +20,12 @@ class Player {
   }
 
 
-  Action use(){return new ThrownAction();}
+  public Player() {
+	this("Anonymous");
+  }
+
+
+Action use(){return new ThrownAction();}
   
   @SuppressWarnings("unused")
 private boolean checkNeighbours(){return false;}
@@ -35,5 +40,15 @@ private boolean checkNeighbours(){return false;}
 	  
 	  return false;
   }
+
+
+public ArrayList<Card> getHand() {
+	return hand;
+}
+
+
+public void setHand(ArrayList<Card> hand) {
+	this.hand = hand;
+}
 
   }
