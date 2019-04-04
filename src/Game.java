@@ -18,7 +18,7 @@ class Game {
   // Placement des joueurs
   LinkedList<Player> players; // Attention !  HashMap ne garantit pas d'ordre alors que TreeMap oui
 
-  static void exchangeHands(Iterator it, LinkedList<String> hand) { //Sous-optimal !!!
+  static void exchangeHands(Iterator<Player> it, LinkedList<String> hand) { //Sous-optimal !!!
     //Echange les mains de deux joueurs --> mettre limite si Iterator.next() pas un Player
     Player player = (Player)it.next();
     LinkedList<String> tmp = new LinkedList<>();
@@ -50,6 +50,7 @@ class Game {
   }
 
   boolean endEra() { // A tester
+
     Player player = this.players.getFirst();
     if( player.hand.size() <= 1 ){
       return true;
@@ -59,4 +60,8 @@ class Game {
     }
   }
 
+  void setGame() {
+	  
+  }
+  
 }

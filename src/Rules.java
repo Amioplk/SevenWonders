@@ -22,19 +22,4 @@ class Rules {
 
   static void dealAction(){};
 
-  // Les verifications pour les chainages
-  boolean doesChain() { // Faire une structure speciale ?? Oui je pense
-    //Itérer (ou boot) sur chain et itérer sur ses enfants
-    return true;
-  };
-
-  void drawWonders(){}; // Dans Game ?
-
-  BorrowedAction toBorrow(){return new BorrowedAction();};
-
-  private boolean checkNeighbours(){return true;};
-
-  // Pas deux cartes de même nom
-  boolean checkSameCard() {return true;}; // Dans Player ?
-
 }
