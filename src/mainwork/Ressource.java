@@ -1,6 +1,6 @@
 package mainwork;
 
-public enum Ressources {
+public enum Ressource {
 	STONE,
 	WOOD,
 	ORE,

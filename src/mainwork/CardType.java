@@ -1,6 +1,6 @@
 package mainwork;
 
-public enum TypeOfCards {
+public enum CardType {
 	TRADE,
 	SCIENCE,
 	WAR,

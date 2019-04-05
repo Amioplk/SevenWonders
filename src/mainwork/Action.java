@@ -4,12 +4,13 @@ public abstract class Action {
 	  // Une action est la pose d'une carte qui possede un effet, PAS le fait de payer les couts par exemple !
 
 	  Player user;
+	  Card card;
 	  // type, couleur
 
 	  // Defausser
 	  // Emprunter chez les autres ??? (Action ? ou Troc ?)
 	  // Mettre en dessous de la merveille
 
-	  public Action(){} //Action par defaut ? --> defausser | Player par defaut ?
+	  public Action(){} //Action par defaut si temps trop long --> defausser | Player par defaut ?
 
 	}

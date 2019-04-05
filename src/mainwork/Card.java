@@ -3,10 +3,10 @@ package mainwork;
 public class Card {
 	
 	private String name;
-	private TypeOfCards type;
+	private CardType type;
 	int nbPlayersMinimum; // Pas sur de figurer ici
 	
-	public Card(String name, TypeOfCards type) {
+	public Card(String name, CardType type) {
 		this.setName(name);
 		this.setType(type);
 	}
@@ -24,11 +24,11 @@ public class Card {
 		this.name = name;
 	}
 
-	public TypeOfCards getType() {
+	public CardType getType() {
 		return type;
 	}
 
-	public void setType(TypeOfCards type) {
+	public void setType(CardType type) {
 		this.type = type;
 	};
 	

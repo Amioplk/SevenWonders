@@ -91,6 +91,10 @@ class Game {
 	}
   }
   
+  void allocateWonders() {
+	  
+  }
+  
   int countPoints(Player player) {
 	  return 0;
   }

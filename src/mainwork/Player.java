@@ -1,5 +1,6 @@
 package mainwork;
 import java.util.*;
+import java.util.stream.Stream;
 
 
 
@@ -13,7 +14,8 @@ class Player {
   Wonder wonder;
   // Les cartes en main
   private ArrayList<Card> hand;
-  // Les actions permanentes dont le joueur dispose
+  // Argent
+  int money;
 
   public Player(String name){
     this.name = name;
@@ -51,7 +53,11 @@ private boolean checkNeighbours(){return false;}
 	this.hand = hand;
   }
   
-  public int getRessources(Ressources r) {
+  @SuppressWarnings("unused")
+  public int getRessources(Ressource r) {
+	Stream<Card> reStream = this.cards.stream().filter(c -> (c.getType() == CardType.RAW || c.getType() == CardType.MANUF));
+	  
+	  
 	  return 0;
   }
 
