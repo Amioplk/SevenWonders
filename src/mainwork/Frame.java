@@ -9,7 +9,6 @@ public class Frame { // Set à l'aide de fichiers !
 	Object chain; // Chainages (Quel type ?!)
 	HashMap<Card, String> typeOfAction; // Type d'action par carte (plusieurs types ? 
 	// Ex 1piece instant + 1pt à la fin) -> enum ?
-	ArrayList<String> LegalTypeOfCards; // Les types de cartes existantes
 	ArrayList<Set<Card>> cards; // Créer des cartes à partir des noms...
 	
 }

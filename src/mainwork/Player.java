@@ -50,5 +50,9 @@ private boolean checkNeighbours(){return false;}
   public void setHand(ArrayList<Card> hand) {
 	this.hand = hand;
   }
-
+  
+  public int getRessources(Ressources r) {
+	  return 0;
   }
+
+ }
