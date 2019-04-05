@@ -4,16 +4,17 @@ class WonderAction extends InstantAction {
 	
 	// Mettre la carte sur un etage de merveille
 	
+	@Override
 	/**
 	 * Incomplet
 	 */
-	public boolean apply(Game game) { // A tester
+	public boolean apply() { // A tester
 		
-		if(!this.user.checkRessources()) return false;
-		
-		--user.wonder.full; //wonderfull lol
+		if(!this.user.checkRessources(this.game, this.card.cost)) {return false;}
+		// Etape d'apply
+		--user.wonder.full; // wonderful lol
 	
 		return true;
 	}
-	
+
 }

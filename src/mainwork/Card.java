@@ -4,6 +4,7 @@ public class Card {
 	
 	private String name;
 	private CardType type;
+	Cost cost;
 	int nbPlayersMinimum; // Pas sur de figurer ici
 	
 	public Card(String name, CardType type) {

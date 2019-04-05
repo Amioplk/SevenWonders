@@ -2,6 +2,6 @@ package mainwork;
 
 abstract class InstantAction extends Action {
   
-	public abstract boolean apply(Game game);
+	public abstract boolean apply();
 
 }

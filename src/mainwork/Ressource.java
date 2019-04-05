@@ -7,5 +7,8 @@ public enum Ressource {
 	CLAY,
 	PAPYRUS,
 	FABRIC,
-	GLASS;
+	GLASS,
+	SHIELD,
+	POINTS,
+	UNDEFINED;
 }

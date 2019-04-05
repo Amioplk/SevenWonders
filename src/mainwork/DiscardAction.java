@@ -1,10 +1,11 @@
 package mainwork;
 class DiscardAction extends InstantAction { 	// Action de défausse
 	
-	public boolean apply(Game game) {
+	@Override
+	public boolean apply() {
 		
 		game.defausse.add(this.card);
-		user.money += 3;
+		this.user.setMoney(this.user.getMoney() + 3) ;
 		
 		return true;
 	}

@@ -1,8 +1,5 @@
 package mainwork;
 import java.util.*;
-import java.util.stream.Stream;
-
-
 
 class Player {
   //La classe Player doit lancer des Actions !!
@@ -15,24 +12,31 @@ class Player {
   // Les cartes en main
   private ArrayList<Card> hand;
   // Argent
-  int money;
+  private int money;
 
   public Player(String name){
     this.name = name;
+    this.money = 3;
   }
 
 
   public Player() {
 	this("Anonymous");
   }
-
-
-Action use(){return new ThrownAction();}
   
   @SuppressWarnings("unused")
-private boolean checkNeighbours(){return false;}
+  private boolean checkNeighbours(){return false;}
  
-  boolean checkRessources() {return false;}
+  boolean checkRessources(Game game, Cost cost) {
+	  
+	  for(Ressource r: cost.dist.keySet()) {
+		  if(this.getTotalRessources(game, r) < cost.dist.get(r)) {
+			  return false;
+		  }
+	  }
+	  
+	  return true;
+  }
   
   // Pas deux cartes de meme nom
   boolean checkSameCard(Card newCard) {
@@ -43,22 +47,43 @@ private boolean checkNeighbours(){return false;}
 	  return false;
   }
 
-
   public ArrayList<Card> getHand() {
 	return hand;
   }
-
 
   public void setHand(ArrayList<Card> hand) {
 	this.hand = hand;
   }
   
-  @SuppressWarnings("unused")
-  public int getRessources(Ressource r) {
-	Stream<Card> reStream = this.cards.stream().filter(c -> (c.getType() == CardType.RAW || c.getType() == CardType.MANUF));
+  public int getTotalRessources(Game game, Ressource r) {
+	Card [] matchedCards = (Card[]) this.cards.stream().filter(c -> (c.getType() == CardType.RAW || c.getType() == CardType.MANUF || c.getType() == CardType.WAR))
+											   .filter(c -> (Frame.toRessource(game.frame.effect.get(c).get(1)).equals(r))) //equals fonctionne ?
+											   .toArray();	
+	
+	return getRessources(game, matchedCards);
+  }
+  
+  private static int getRessources(Game game, Card[] cards) {
+	  int sum = 0;
 	  
+	  for(Card c: cards) {
+		  sum += Integer.parseInt(game.frame.effect.get(c).get(0));
+	  }
 	  
-	  return 0;
+	  return sum;
+  }
+  
+  public int getForce(Game game) {
+	  
+	  return getTotalRessources(game, Ressource.SHIELD);
   }
 
- }
+  public int getMoney() {
+	return money;
+}
+
+  public void setMoney(int money) {
+	this.money = money;
+}
+
+}
