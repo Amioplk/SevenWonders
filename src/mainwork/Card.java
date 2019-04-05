@@ -4,7 +4,7 @@ public class Card {
 	
 	private String name;
 	private String type;
-	int nbPlayersMinimum;
+	int nbPlayersMinimum; // Pas sur de figurer ici
 	
 	public Card(String name, String type) {
 		this.setName(name);
@@ -36,6 +36,7 @@ public class Card {
 		return (this.name == newCard.name);
 	}
 	
+	@Override
 	public String toString() {
 		return this.getName();
 	}

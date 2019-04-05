@@ -15,7 +15,7 @@ class Game {
   // Extentions
   List<String> ext;
   // Placement des joueurs
-  LinkedList<Player> players;
+  ArrayList<Player> players;
   // Référentiel
   Frame frame;
 
@@ -26,52 +26,69 @@ class Game {
 	  y.setHand(xCards);
   }
   
-  static Player swapHands(Iterator<Player> it, Player player) { // A tester
+  static void swapHands(Iterator<Player> it, Player player) { // A tester
     //Echange les mains de deux joueurs --> mettre limite si Iterator.next() pas un Player
 
 	  if(!it.hasNext()) {
-		  return player;
+		  return;
 	  }
 	  
 	  Player newPlayer = it.next();
 	  swapHands(player, newPlayer);
 	  
-	  return swapHands(it, newPlayer);
+	  swapHands(it, newPlayer);
 	  
   }
 
   void draft() { // A tester
-
-    Iterator<Player> it = (era % 2 == 1) ? this.players.iterator() : this.players.descendingIterator();
-
-    Player player = this.players.getFirst();
-    Player lastPlayer = new Player();
+	  
+	ArrayList<Player> properPlayers = new ArrayList<>();
+	properPlayers.addAll(this.players);
+    if(era % 2 == 1) Collections.reverse(properPlayers);
+    Iterator<Player> it = properPlayers.iterator();
+     
     while(it.hasNext()) {
 
-      lastPlayer = swapHands(it, player);
+      swapHands(it, properPlayers.get(0));
 
     }
-
-    swapHands(player, lastPlayer);
-    
+   
   }
 
+  /**
+ * Verifier que les joueurs ne sont pas vide
+ */
   boolean endEra() { // A tester
 
-    return( players.getFirst().getHand().size() <= 1 );
+    return( players.get(0).getHand().size() <= 1 );
     
   }
 
   void beginEra() {
+
 	  this.allocateCards();
   }
   
+  /**
+ * Les players doivent etre donnes dans l'ordre des aiguilles d'une montre
+ */
   void setGame() {
 	  
   }
   
-  void allocateCards() {
+  /**
+ * Verifier que les cartes sont bien distribuées équitablement
+ */
+  void allocateCards() { // A tester
 	  // Distribuer les cartes
+	
+	Set<Card> eraCards = frame.cards.get(this.era);
+	
+	int i = 1;
+	for(Card card : eraCards) {
+		players.get(i%players.size()).getHand().add(card);
+		++i;
+	}
   }
   
   int countPoints(Player player) {

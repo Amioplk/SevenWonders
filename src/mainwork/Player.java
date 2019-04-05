@@ -42,13 +42,13 @@ private boolean checkNeighbours(){return false;}
   }
 
 
-public ArrayList<Card> getHand() {
+  public ArrayList<Card> getHand() {
 	return hand;
-}
+  }
 
 
-public void setHand(ArrayList<Card> hand) {
+  public void setHand(ArrayList<Card> hand) {
 	this.hand = hand;
-}
+  }
 
   }
