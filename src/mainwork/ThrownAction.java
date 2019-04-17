@@ -1,6 +1,6 @@
 package mainwork;
 
-class ThrownAction extends InstantAction implements Applyable{
+class ThrownAction extends Action implements Applyable{
 	
 	Card card;
 	
@@ -12,9 +12,8 @@ class ThrownAction extends InstantAction implements Applyable{
 	
 	@Override
 	public boolean apply() {
-		this.user.cards.remove(this.card);
 		
-		return true;
+		return false;
 	}
 
 }

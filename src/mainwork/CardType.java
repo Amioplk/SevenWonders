@@ -8,5 +8,6 @@ public enum CardType {
 	RAW,
 	MANUF,
 	LEADER,
-	ROB;
+	ROB,
+	OTHER;
 }

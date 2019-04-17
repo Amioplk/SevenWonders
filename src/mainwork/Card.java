@@ -1,11 +1,15 @@
 package mainwork;
 
+import com.google.common.base.MoreObjects;
+import com.google.common.base.MoreObjects.ToStringHelper;
+
 public class Card {
 	
 	private String name;
 	private CardType type;
+	private Action action;
 	Cost cost;
-	int nbPlayersMinimum; // Pas sur de figurer ici
+	int nbPlayersMinimum;
 	
 	public Card(String name, CardType type) {
 		this.setName(name);
@@ -34,12 +38,22 @@ public class Card {
 	};
 	
 	public boolean equals(Card newCard) {
-		return (this.name == newCard.name);
+		return (this.toString().equals(newCard.toString()));
 	}
 	
 	@Override
 	public String toString() {
-		return this.getName();
+		ToStringHelper string = MoreObjects.toStringHelper(this);
+		string.add(this.name, true);
+		return string.toString();
+	}
+
+	public Action getAction() {
+		return action;
+	}
+
+	public void setAction(Action action) {
+		this.action = action;
 	}
 	
 }

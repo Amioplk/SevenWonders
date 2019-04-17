@@ -23,7 +23,10 @@ public class Frame { // Set à l'aide de fichiers !
 	
 	HashMap<Card, Cost> cost; // Liste des couts des cartes -> seulement de l'initialisation
 	
+	HashMap<Card, Integer> nbPlayerPerCard; // Seuil de joueurs minimum
+	
 	public static Ressource toRessource(String r) {
+		
 		switch(r) {
 			case("CLAY"): return Ressource.CLAY;
 			case("FABRIC"): return Ressource.FABRIC;

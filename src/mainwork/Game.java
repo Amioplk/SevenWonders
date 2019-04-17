@@ -103,7 +103,7 @@ class Game {
 	  Card card = choseCard(user);
 	  if(!user.checkRessources(this, card.cost)) {return false;}
 	  
-	  Applyable ta;
+	  Applyable ta = new ThrownAction(this,user, new Card("Discard", CardType.OTHER));
 	  switch(choseMode()) {
 	  	case("Thrown") : ta = new ThrownAction(this, user, card);
 	  	case("Wonder") : ta = new WonderAction();
@@ -111,16 +111,19 @@ class Game {
 	  	default : this.discardCard(card, user);
 	  }
 	  
-	  return ta.apply();
+	  boolean ok = ta.apply();
+	  if(ok) user.cards.remove(card);
+  
+	  return ok;
   }
 
   private void discardCard(Card card, Player user) {
 	  this.defausse.add(card);
-	  user.setMoney(user.getMoney() + 3) ;
+	  user.setMoney(user.getMoney() + 3);
   }
 
   private Card choseCard(Player player) {
-	  return new Card("Manufacture" ,CardType.RAW);
+	  return new Card("Discard", CardType.OTHER);
   }
   
   private String choseMode() {
