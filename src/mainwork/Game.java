@@ -105,7 +105,7 @@ class Game {
 	  
 	  Applyable ta = new ThrownAction(this,user, new Card("Discard", CardType.OTHER));
 	  switch(choseMode()) {
-	  	case("Thrown") : ta = new ThrownAction(this, user, card);
+	  	case("Thrown") : ta = (Applyable) card.getAction();
 	  	case("Wonder") : ta = new WonderAction();
 	  	case("Discard") : this.discardCard(card, user);
 	  	default : this.discardCard(card, user);
