@@ -6,7 +6,6 @@ public abstract class Action {
 
 	Game game;
 	Player user;
-	Card card;
 
 	public Action(){} //Action par defaut si temps trop long --> defausser | Player par defaut ?
 

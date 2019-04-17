@@ -6,7 +6,7 @@ class Player {
 
   String name;
   // Les cartes deja  posees
-  Set<Card> cards;
+  Set<Card> cards; // Probleme de doublons ??
   // Merveille dont le joueur dispose
   Wonder wonder;
   // Les cartes en main

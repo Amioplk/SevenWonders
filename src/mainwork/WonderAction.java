@@ -1,6 +1,6 @@
 package mainwork;
 
-class WonderAction extends InstantAction {
+class WonderAction extends InstantAction implements Applyable {
 	
 	// Mettre la carte sur un etage de merveille
 	
@@ -10,7 +10,6 @@ class WonderAction extends InstantAction {
 	 */
 	public boolean apply() { // A tester
 		
-		if(!this.user.checkRessources(this.game, this.card.cost)) {return false;}
 		// Etape d'apply
 		--user.wonder.full; // wonderful lol
 	

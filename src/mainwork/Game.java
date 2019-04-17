@@ -98,4 +98,33 @@ class Game {
   int countPoints(Player player) {
 	  return 0;
   }
+  
+  boolean dealAction(Player user) {
+	  Card card = choseCard(user);
+	  if(!user.checkRessources(this, card.cost)) {return false;}
+	  
+	  Applyable ta;
+	  switch(choseMode()) {
+	  	case("Thrown") : ta = new ThrownAction(this, user, card);
+	  	case("Wonder") : ta = new WonderAction();
+	  	case("Discard") : this.discardCard(card, user);
+	  	default : this.discardCard(card, user);
+	  }
+	  
+	  return ta.apply();
+  }
+
+  private void discardCard(Card card, Player user) {
+	  this.defausse.add(card);
+	  user.setMoney(user.getMoney() + 3) ;
+  }
+
+  private Card choseCard(Player player) {
+	  return new Card("Manufacture" ,CardType.RAW);
+  }
+  
+  private String choseMode() {
+	  return "Discard"; 
+  }
+  
 }

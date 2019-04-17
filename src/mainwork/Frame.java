@@ -19,18 +19,9 @@ public class Frame { // Set à l'aide de fichiers !
 	
 	ArrayList<Set<Card>> cards; // Créer des cartes à partir des noms...
 	
-	HashMap<Card, ArrayList<String>> effect; // Liste des effets des cartes : formaté comment ? (Pour l'instant 0: n° et 1: Ressource
+	HashMap<Card, ArrayList<String>> effect; // Liste des effets des cartes : formaté comment ? (Pour l'instant 0: nbr et 1: Ressource)
 	
-	HashMap<Card, Cost> cost; // Liste des couts des cartes
-	
-	public static Action throwAction(Game game, Player player, Card card) {
-		
-		switch(game.frame.typeOfAction.get(card)) {
-			case "ThrownAction": return new ThrownAction(game, player, card, Integer.parseInt(game.frame.effect.get(card).get(0)));
-		}
-		
-		return new WonderAction();
-	}
+	HashMap<Card, Cost> cost; // Liste des couts des cartes -> seulement de l'initialisation
 	
 	public static Ressource toRessource(String r) {
 		switch(r) {

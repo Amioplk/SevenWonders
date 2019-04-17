@@ -1,20 +1,19 @@
 package mainwork;
 
-class ThrownAction extends InstantAction {
+class ThrownAction extends InstantAction implements Applyable{
 	
-	int moneyEarning;
+	Card card;
 	
-	public ThrownAction(Game game, Player player, Card card, int earning) {
+	public ThrownAction(Game game, Player player, Card card) {
 		this.game = game;
 		this.user = player;
 		this.card = card;
-		this.moneyEarning = earning;
 	}
 	
 	@Override
 	public boolean apply() {
-		this.user.cards.add(this.card);
-		this.user.setMoney(this.user.getMoney() + this.moneyEarning);
+		this.user.cards.remove(this.card);
+		
 		return true;
 	}
 
