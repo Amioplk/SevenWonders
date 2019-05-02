@@ -1,9 +1,10 @@
-package test;
+package io.github.Amioplk.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import mainwork.Frame;
-import mainwork.Wonder;
+
+import io.github.Amioplk.mainwork.Frame;
+import io.github.Amioplk.mainwork.Wonder;
 
 class WonderTest {
 

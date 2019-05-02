@@ -1,4 +1,4 @@
-package mainwork;
+package io.github.Amioplk.mainwork;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.MoreObjects.ToStringHelper;
@@ -9,11 +9,15 @@ public class Card {
 	private CardType type;
 	private Action action;
 	Cost cost;
-	int nbPlayersMinimum;
 	
 	public Card(String name, CardType type) {
+		this(name, type, null);
+	}
+	
+	public Card(String name, CardType type, Action action) {
 		this.setName(name);
 		this.setType(type);
+		this.setAction(action);
 	}
 	
 	// Les verifications pour les chainages

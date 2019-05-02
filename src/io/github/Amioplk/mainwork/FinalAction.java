@@ -1,4 +1,4 @@
-package mainwork;
+package io.github.Amioplk.mainwork;
 import java.util.HashMap;
 
 class FinalAction extends Action {

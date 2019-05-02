@@ -1,4 +1,4 @@
-package mainwork;
+package io.github.Amioplk.mainwork;
 
 public enum CardType {
 	TRADE,
@@ -9,5 +9,6 @@ public enum CardType {
 	MANUF,
 	LEADER,
 	ROB,
+	GUILD,
 	OTHER;
 }

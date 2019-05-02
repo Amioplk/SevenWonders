@@ -1,4 +1,4 @@
-package mainwork;
+package io.github.Amioplk.mainwork;
 
 import java.util.ArrayList;
 
@@ -9,8 +9,10 @@ public class Wonder {
 	ArrayList<Action> actions;
 	int side;
 	
+	public Wonder() {}
+	
 	public Wonder(Frame frame, String name) {
-		side = (Math.random() > 1/2) ? 0 : 1;
+		side = (Math.random() > 1/2) ? 0 : 1; // A ou B
 		this.name = name;
 		this.full = frame.nbFloorsByWonder.get(this.name + side);
 	}

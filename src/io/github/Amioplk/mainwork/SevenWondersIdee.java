@@ -1,4 +1,4 @@
-package mainwork;
+package io.github.Amioplk.mainwork;
 // *************************************************************************7Wonders***********************************************************************************
 
 // L'approche doit se faire par les actions et determiner si oui ou non les coups sont legaux

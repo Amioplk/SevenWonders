@@ -1,4 +1,4 @@
-package mainwork;
+package io.github.Amioplk.mainwork;
 
 public abstract class Action {
 

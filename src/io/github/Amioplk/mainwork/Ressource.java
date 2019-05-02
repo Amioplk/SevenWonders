@@ -1,4 +1,4 @@
-package mainwork;
+package io.github.Amioplk.mainwork;
 
 public enum Ressource {
 	STONE,
@@ -9,6 +9,5 @@ public enum Ressource {
 	FABRIC,
 	GLASS,
 	SHIELD,
-	POINTS,
-	UNDEFINED;
+	MONEY;
 }

@@ -1,4 +1,4 @@
-package mainwork;
+package io.github.Amioplk.mainwork;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -11,6 +11,8 @@ public class Frame { // Set à l'aide de fichiers !
 	
 	HashMap<Card, String> typeOfAction; // Type d'action par carte (plusieurs types ? 
 	// Ex 1piece instant + 1pt à la fin)
+	
+	HashMap<String, String> typeOfWonderAction; // Type d'action par étage de merveille
 	
 	/**
 	 * String must be name + side (0: A ; 1:B)
@@ -36,8 +38,7 @@ public class Frame { // Set à l'aide de fichiers !
 			case("STONE"): return Ressource.STONE;
 			case("WOOD"): return Ressource.WOOD;
 			case("SHIELD"): return Ressource.SHIELD;
-			case("POINTS"): return Ressource.POINTS;
-			default: return Ressource.UNDEFINED;
+			default: return Ressource.MONEY;
 		}
 	}
 	
