@@ -9,12 +9,11 @@ class WonderAction extends Action implements Applyable {
 		this.user = player;
 	}
 	
-	public boolean apply() { // A tester
+	public void apply() { // A tester
 		
 		// Etape d'apply
 		--user.wonder.full; // wonderful lol
-	
-		return true;
+
 	}
 
 }

@@ -29,17 +29,16 @@ public class Frame { // Set à l'aide de fichiers !
 	
 	public static Ressource toRessource(String r) {
 		
-		switch(r) {
-			case("CLAY"): return Ressource.CLAY;
-			case("FABRIC"): return Ressource.FABRIC;
-			case("GLASS"): return Ressource.GLASS;
-			case("ORE"): return Ressource.ORE;
-			case("PAPYRUS"): return Ressource.PAPYRUS;
-			case("STONE"): return Ressource.STONE;
-			case("WOOD"): return Ressource.WOOD;
-			case("SHIELD"): return Ressource.SHIELD;
-			default: return Ressource.MONEY;
-		}
+		if(r.equals("CLAY")) return Ressource.CLAY;
+		else if(r.equals("FABRIC")) return Ressource.FABRIC;
+		else if(r.equals("GLASS")) return Ressource.GLASS;
+		else if(r.equals("ORE")) return Ressource.ORE;
+		else if(r.equals("PAPYRUS")) return Ressource.PAPYRUS;
+		else if(r.equals("STONE")) return Ressource.STONE;
+		else if(r.equals("WOOD")) return Ressource.WOOD;
+		else if(r.equals("SHIELD")) return Ressource.SHIELD;
+		else return Ressource.MONEY; 
+			
 	}
 	
 }

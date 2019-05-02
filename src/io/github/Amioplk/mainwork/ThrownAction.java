@@ -4,18 +4,14 @@ class ThrownAction extends Action implements Applyable{
 	
 	Card card;
 	
-	public ThrownAction(Game game, Player player, Card card) {
-		this.game = game;
+	public ThrownAction(Player player, Card card) {
 		this.user = player;
 		this.card = card;
 	}
 
-	public boolean apply() {
-		switch(this.card.getName()) {
-			case "Marché Ouest" : ouestMarket();
-			case "Marché Est" : eastMarket();
-		}
-		return false;
+	public void apply() {
+		if(this.card.getName().equals("Marché Ouest")) ouestMarket();
+		if(this.card.getName().equals("Marché Est")) eastMarket();
 	}
 
 	private void ouestMarket() {

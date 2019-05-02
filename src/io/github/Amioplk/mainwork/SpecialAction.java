@@ -8,12 +8,8 @@ public class SpecialAction extends Action implements Applyable {
 		
 	}
 	
-	public boolean apply() { // identify
-		switch(this.card.getName()) {
+	public void apply() { // identify
 		
-		}
-		
-		return true;
 	}
 	
 }

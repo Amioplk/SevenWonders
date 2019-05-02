@@ -96,64 +96,36 @@ public class Game {
 	  
   }
   
-  boolean dealAction(Player user) {
-	  Card card = choseCard(user);
-	  if(!user.checkRessources(card.cost)) {return false;}
+  void dealAction(Player user) {
+	 
+	 Card card = choseCard(user);
+	 if(!user.checkRessources(card.cost)) {dealBorrowing(user, card);}
 	  
-	  boolean ok = dealBorrowing(user, card);
-	  if(!ok) return false;
+	 if(choseMode().equals("Thrown")) {
+		if(card.getAction() instanceof ThrownAction) ((ThrownAction) card.getAction()).apply();
+	 }
+	 else if(choseMode().equals("Wonder")) {
+		(new WonderAction(this, user)).apply();
+	 }
+	 else this.discardCard(card, user);
 	  
-		switch(choseMode()) {
-	  		case("Thrown") : {
-	  			if(card.getAction() instanceof ThrownAction) ok = ((ThrownAction) card.getAction()).apply();
-	  		}
-	  		case("Wonder") : {
-	  			ok = (new WonderAction(this, user)).apply();
-	  		}
-	  		case("Discard") : this.discardCard(card, user);
-	  		default : this.discardCard(card, user);
-	  	}
-	  
-	  if(ok) user.cards.remove(card);
-  
-	  return ok;
+	 user.cards.remove(card);
+
   }
 
-  private boolean dealBorrowing(Player player, Card card) {
+  private void dealBorrowing(Player player, Card card) {
 	
+	//Choose to borrow or not
+	  
 	Cost toBorrow = missingAmount(player, card.cost);
-	if(player.getMoney() < toBorrow.dist.values().stream().mapToInt(i -> i.intValue()).sum()) return false;
+	if(player.getMoney() < toBorrow.dist.values().stream().mapToInt(i -> i.intValue()).sum()) return;
 	
 	for(Ressource r : toBorrow.dist.keySet()) {
 		
-		int many = toBorrow.dist.get(r);
+		(new BorrowAction(r, toBorrow.dist.get(r))).apply();
 		
-		Player lNeighbour = this.getNeighbour(player, true);
-		Player rNeighbour = this.getNeighbour(player, false);
-		
-		boolean left = lNeighbour.getTotalRessources(r) >= 0;
-		boolean right = rNeighbour.getTotalRessources(r) >= 0;
-	
-		if(left && right) {
-			// Choose player
-		}
-		else if(left) {
-			if(lNeighbour.getTotalRessources(r) < many) return false;
-			else {
-				lNeighbour.addMoney(many*player.priceLeft);
-				player.addMoney(-many*player.priceLeft);
-			}
-		}
-		else if(right) {
-			if(rNeighbour.getTotalRessources(r) < many) return false;
-			else {
-				rNeighbour.addMoney(many*player.priceRight);
-				player.addMoney(-many*player.priceRight);
-			}
-		}
 	}
-	
-	return true;
+
   }
 
 /**
