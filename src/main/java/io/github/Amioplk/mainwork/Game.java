@@ -122,16 +122,28 @@ void draft() { // A tester
 	  
   }
   
-  void dealAction(Player user) {
+  /**
+   * L'utilisateur joue
+   * @param user
+   * @throws FullWonderException 
+   */
+void play(Player user) throws FullWonderException {
 	 
 	 Card card = choseCard(user);
 	 if(!user.checkRessources(card.cost)) {dealBorrowing(user, card);}
 	  
 	 if(choseMode().equals("Thrown")) {
-		if(card.getAction() instanceof ThrownAction) ((ThrownAction) card.getAction()).apply();
+		card.apply();
 	 }
 	 else if(choseMode().equals("Wonder")) {
-		(new WonderAction(user)).apply();
+		
+		 if(user.wonder.fullWonder()) {
+			 // Log
+			 throw new FullWonderException();
+		 }
+		 
+		user.wonder.getActions().get(user.wonder.getNextAvailable(frame));
+		--user.wonder.full;
 	 }
 	 else this.discardCard(card, user);
 	  
@@ -158,7 +170,7 @@ void draft() { // A tester
   * Must be private after testing
   * @param player
   * @param right true if we want the right Neighbour, false otherwise
-  * @return
+  * @return Neighbour
   */
   public Player getNeighbour(Player player, boolean right) {
 	  

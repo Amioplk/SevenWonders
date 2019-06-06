@@ -26,14 +26,9 @@ public class Frame {
 	
 	/**
 	 * Actions par merveille
+	 * !! keys are in format NAME + SIDE 
 	 */
 	HashMap<String, Set<String>> wonderActions;
-	
-	/**
-	 * OBSOLETE : Mettre les wonders sous forme de cartes speciales dans Wonder
-	 * String must be name + side (0: A ; 1:B)
-	 */
-	HashMap<String, Integer> nbFloorsByWonder;
 	
 	/**
 	 * Listes (par ere) des ensembles de cartes

@@ -26,6 +26,10 @@ public class Card {
 		this.setTypes(types);
 	}
 	
+	void apply() {
+		
+	}
+	
 	/**
 	 * @return true si les verifications pour les chainages sont ok
 	 */
