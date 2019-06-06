@@ -3,30 +3,57 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-public class Frame { // Set a l'aide de fichiers !
-	
-	Set<String> wondersAvailable; // Merveilles disponibles
-	
-	Object chain; // Chainages (Quel type ?!)
-	
-	HashMap<Card, String> typeOfAction; // Type d'action par carte (plusieurs types ? 
-	// Ex 1piece instant + 1pt a la fin)
-	
-	HashMap<String, String> typeOfWonderAction; // Type d'action par etage de merveille
+/**
+ * @author Amioplk
+ * Set a l'aide de fichiers XML (ou de schémas) !
+ */
+public class Frame {
 	
 	/**
+	 * Merveilles disponibles
+	 */
+	Set<String> wondersAvailable;
+	
+	/**
+	 * Chainages (Quel type ?!)
+	 */
+	Object chain;
+	
+	/**
+	 * Types d'action par carte
+	 */
+	HashMap<Card, ActionType> actionTypes; // Ex 1piece instant + 1pt a la fin)
+	
+	/**
+	 * Actions par merveille
+	 */
+	HashMap<String, Set<String>> wonderActions;
+	
+	/**
+	 * OBSOLETE : Mettre les wonders sous forme de cartes speciales dans Wonder
 	 * String must be name + side (0: A ; 1:B)
 	 */
 	HashMap<String, Integer> nbFloorsByWonder;
 	
+	/**
+	 * Listes (par ere) des ensembles de cartes
+	 */
 	ArrayList<Set<Card>> cards; // Creer des cartes a partir des noms...
 	
-	HashMap<Card, ArrayList<String>> effect; // Liste des effets des cartes : formate comment ? (Pour l'instant 0: nbr et 1: Ressource)
+	/**
+	 * Liste des couts des cartes
+	 */
+	HashMap<Card, Cost> cost;
 	
-	HashMap<Card, Cost> cost; // Liste des couts des cartes -> seulement de l'initialisation
+	/**
+	 * // Seuil de joueurs minimum
+	 */
+	HashMap<Card, Integer> nbPlayerPerCard; // Voir si Card -> String
 	
-	HashMap<Card, Integer> nbPlayerPerCard; // Seuil de joueurs minimum
-	
+	/**
+	 * @param r
+	 * @return le type de ressource que le String represente
+	 */
 	public static Ressource toRessource(String r) {
 		
 		if(r.equals("CLAY")) return Ressource.CLAY;

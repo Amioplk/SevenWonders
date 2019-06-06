@@ -1,5 +1,7 @@
 package main.java.io.github.Amioplk.mainwork;
 
+import java.util.Set;
+
 import com.google.common.base.MoreObjects;
 import com.google.common.base.MoreObjects.ToStringHelper;
 
@@ -8,20 +10,26 @@ public class Card {
 	private String name;
 	private CardType type;
 	private Action action;
+	private Set<ActionType> types;
 	Cost cost;
 	
+	// Ajouter l'ere ?
+	
 	public Card(String name, CardType type) {
-		this(name, type, null);
+		this(name, type, null, null);
 	}
 	
-	public Card(String name, CardType type, Action action) {
+	public Card(String name, CardType type, Action action, Set<ActionType> types) {
 		this.setName(name);
 		this.setType(type);
 		this.setAction(action);
+		this.setTypes(types);
 	}
 	
-	// Les verifications pour les chainages
-	boolean doesChain() { // Faire une structure speciale
+	/**
+	 * @return true si les verifications pour les chainages sont ok
+	 */
+	boolean doesChain() {
 		return false;
 	}
 
@@ -58,6 +66,14 @@ public class Card {
 
 	public void setAction(Action action) {
 		this.action = action;
+	}
+
+	public Set<ActionType> getTypes() {
+		return types;
+	}
+
+	public void setTypes(Set<ActionType> types) {
+		this.types = types;
 	}
 	
 }

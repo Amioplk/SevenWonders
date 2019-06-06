@@ -6,18 +6,29 @@ import java.util.stream.Collectors;
 
 
 
+/**
+ * @author Amioplk
+ * Represente l'etat du jeu en general
+ */
 public class Game {
-  //On met ici l'etat du jeu en general
 
   // Ere
   int era;
-  // Defausse (Collection)
-  Collection<Card> defausse;
-  // Extentions (https://gusandco.net/2012/06/14/7-wonders-compile-de-toutes-nos-extensions/)
-  List<String> ext;
-  // Placement des joueurs
-  public ArrayList<Player> players;
-  // Referentiel
+  /**
+ * Defausse des cartes
+ */
+Collection<Card> defausse;
+  /**
+ * Extentions (https://gusandco.net/2012/06/14/7-wonders-compile-de-toutes-nos-extensions/)
+ */
+List<String> ext;
+  /**
+ * Placement des joueurs
+ */
+public ArrayList<Player> players;
+  /**
+ * Référentiel du jeu
+ */
   Frame frame;
 
   static void swapHands(Player x, Player y) { // A tester
@@ -27,8 +38,12 @@ public class Game {
 	  y.setHand(xCards);
   }
   
-  static void swapHands(Iterator<Player> it, Player player) { // A tester
-    //Echange les mains de deux joueurs --> mettre limite si Iterator.next() pas un Player
+/**
+ * @param it
+ * @param player
+ * Fonction reccursive qui echange les mains de deux joueurs
+ */
+static void swapHands(Iterator<Player> it, Player player) { // A tester
 
 	  if(!it.hasNext()) {
 		  return;
@@ -41,7 +56,10 @@ public class Game {
 	  
   }
 
-  void draft() { // A tester
+  /**
+ * Phase de draft
+ */
+void draft() { // A tester
 	  
 	ArrayList<Player> properPlayers = new ArrayList<>();
 	properPlayers.addAll(this.players);
@@ -57,10 +75,18 @@ public class Game {
   }
 
   /**
- * Verifier que les joueurs ne sont pas vide
+ * Verifier que les joueurs ne sont pas vides
+ * @throws IllegalAccessException 
  */
-  boolean endEra() { // A tester
+  boolean endEra() throws IllegalAccessException { // A tester
 
+	if(players.size() == 0) {
+		throw new IllegalStateException();
+	}
+	if(players.get(0).getHand() == null) {
+		throw new IllegalStateException();
+	}
+	  
     return( players.get(0).getHand().size() <= 1 );
     
   }
@@ -78,10 +104,10 @@ public class Game {
   }
   
   /**
- * Verifier que les cartes sont bien distribuees equitablement
- */
+   * Distribuer les cartes
+  */
   void allocateCards() { // A tester
-	  // Distribuer les cartes
+	  // Verifier que les cartes sont bien distribuees equitablement
 	
 	Set<Card> eraCards = frame.cards.get(this.era);
 	

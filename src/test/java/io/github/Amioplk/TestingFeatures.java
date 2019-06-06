@@ -1,6 +1,8 @@
 package test.java.io.github.Amioplk;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -12,7 +14,9 @@ public class TestingFeatures {
 	void correctNumberOfRessources() {
 		Action pa = new PermAction(2, Ressource.WOOD);
 		Player player = new Player();
-		player.cards.add(new Card("permanente", CardType.RAW, pa));
+		Set<ActionType> types = new HashSet<ActionType>();
+		types.add(ActionType.PERM);
+		player.cards.add(new Card("permanente", CardType.RAW, pa, types));
 		Assertions.assertTrue(player.getTotalRessources(Ressource.WOOD)==2);
 	}
 	
