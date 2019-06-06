@@ -48,7 +48,7 @@ public class Card {
 	@Override
 	public String toString() {
 		ToStringHelper string = MoreObjects.toStringHelper(this);
-		string.add(this.name, true);
+		string.add("Title", this.name);
 		return string.toString();
 	}
 
@@ -58,6 +58,11 @@ public class Card {
 
 	public void setAction(Action action) {
 		this.action = action;
+	}
+	
+	public static void main(String [] args) {
+		Card card = new Card("Nouvelle carte", CardType.OTHER);
+		System.out.println(card.toString());
 	}
 	
 }

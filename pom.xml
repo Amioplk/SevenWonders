@@ -28,7 +28,7 @@
     
     <dependency>
   		<groupId>com.google.guava</groupId>
-  		<artifactId>guava-gwt</artifactId>
+  		<artifactId>guava</artifactId>
   		<version>27.1-jre</version>
 	</dependency>
   </dependencies>
@@ -75,6 +75,14 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        <plugin>
+  			<groupId>org.codehaus.mojo</groupId>
+  			<artifactId>exec-maven-plugin</artifactId>
+  			<version>1.6.0</version>
+  			<configuration>
+    			<mainClass>main.java.io.github.Amioplk.mainwork.Card</mainClass>
+  			</configuration>
+		</plugin>
       </plugins>
     </pluginManagement>
   </build>
