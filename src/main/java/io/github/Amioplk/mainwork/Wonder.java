@@ -1,24 +1,52 @@
 package main.java.io.github.Amioplk.mainwork;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Wonder {
 	
-	int full; // On fait un max qu'on decremente;
+	
+	int max;
+	int index;
 	String name;
-	ArrayList<Action> actions;
-	int side;
+	private List<String> actions;
+	char side;
+	private Card defaultAction;
 	
 	public Wonder() {}
 	
 	public Wonder(Frame frame, String name) {
-		side = (Math.random() > 1/2) ? 0 : 1; // A ou B
+		this.side = (Math.random() > 1/2) ? 'A' : 'B';
 		this.name = name;
-		this.full = frame.nbFloorsByWonder.get(this.name + side);
+		this.actions = frame.wonderActions.get(name + side);
+		this.max = actions.size();
+		this.index = 0;
 	}
 	
 	public boolean fullWonder() {
-		return full == 0;
+		return max == index;
+	}
+
+	public List<String> getActions() {
+		return actions;
+	}
+
+	public void setActions(List<String> actions) {
+		this.actions = actions;
+	}
+
+	/**
+	 * @param frame
+	 * @return Size of the wonder
+	 */
+	public int getSize(Frame frame) {
+		return frame.wonderActions.get(name + side).size();
+	}
+	
+	/**
+	 * @return the index of the next action available on this Wonder
+	 */
+	public int getNextAvailable() {
+		return index;
 	}
 	
 }

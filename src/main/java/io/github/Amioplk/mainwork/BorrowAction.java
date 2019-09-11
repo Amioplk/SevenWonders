@@ -1,52 +1,34 @@
 package main.java.io.github.Amioplk.mainwork;
 
-class BorrowAction extends Action implements Applyable {
+/**
+ * @author Amioplk Represente l'action d'emprunter
+ */
+class BorrowAction extends Action { // Facilement remplacable par une methode dans Game ?
 
-  int many;
-  Ressource what;
-  private Player who;
-  
-  public BorrowAction(Ressource r, int need) {
-	  this.what = r;
-	  this.many = need;
-  }
-  
-  @Override
-  public void apply() {
+	int many;
+	/**
+	 * On suppose que la ressource n'est pas SHIELD car le shield ne sera pas
+	 * présent dans les coûts des cartes
+	 */
+	Ressource what;
+	Player who;
+
+	public BorrowAction(Ressource r, int need, Player player) {
+		this.what = r;
+		this.many = need;
+		this.who = player;
+	}
+
+	public void apply() {
+
+		who.addMoney(many * user.getLeftPrice(what));
+		user.addMoney(-many * user.getLeftPrice(what));
+		// Log
+
+	}
 	
-	Player lNeighbour = game.getNeighbour(user, false);
-	Player rNeighbour = game.getNeighbour(user, true);
-		
-	boolean left = lNeighbour.getTotalRessources(what) >= 0;
-	boolean right = rNeighbour.getTotalRessources(what) >= 0;
+	public boolean equals(BorrowAction b) {
+		return this.what == b.what && this.who == b.who;
+	}
 	
-	if(left && right) {
-		// Choose player
-	}
-	else if(left && lNeighbour.getTotalRessources(what) >= many) {
-		
-		lNeighbour.addMoney(many*user.priceLeft);
-		user.addMoney(-many*user.priceLeft);
-	}
-	else if(right && rNeighbour.getTotalRessources(what) >= many) {
-			
-		rNeighbour.addMoney(many*user.priceRight);
-		user.addMoney(-many*user.priceRight);
-			
-	}
-	else; //C'est la merde
-
-	  
-  }
-
-  public Player getWho() {
-	return who;
-  }
-
-  public void setWho(Player who) {
-	this.who = who;
-  }
-  
-  
-
 }

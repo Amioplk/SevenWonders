@@ -10,5 +10,5 @@ public enum CardType {
 	LEADER,
 	ROB,
 	GUILD,
-	OTHER;
+	WONDER;
 }
