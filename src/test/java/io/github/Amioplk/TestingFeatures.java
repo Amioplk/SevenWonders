@@ -11,12 +11,17 @@ import main.java.io.github.Amioplk.mainwork.*;
 public class TestingFeatures {
 	
 	@Test
-	void correctNumberOfRessources() {
-		Action pa = new PermAction(2, Ressource.WOOD);
-		Player player = new Player();
+	void correctNumberOfRessources() { //Incorrect -> Ajouter dans le frame
+		//Game.setFrame(new Frame());
+		//Game.frame.composition = 
+
 		Set<ActionType> types = new HashSet<ActionType>();
 		types.add(ActionType.PERM);
-		player.cards.add(new Card("permanente", CardType.RAW, pa, types));
+		
+		Player player = new Player();
+		Card card = new Card("permanente", CardType.RAW, types);
+		player.cards.add(card);
+		
 		Assertions.assertTrue(player.getTotalRessources(Ressource.WOOD)==2);
 	}
 	

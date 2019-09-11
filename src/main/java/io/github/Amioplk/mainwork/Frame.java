@@ -1,6 +1,6 @@
 package main.java.io.github.Amioplk.mainwork;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -15,52 +15,40 @@ public class Frame {
 	Set<String> wondersAvailable;
 	
 	/**
-	 * Chainages (Quel type ?!)
+	 * Chainages (Arbre binaire ?)
 	 */
 	Object chain;
 	
 	/**
 	 * Types d'action par carte
+	 * Ex : 1 piece instant + 1 pt a la fin : INSTANT et FINAL
 	 */
-	HashMap<Card, ActionType> actionTypes; // Ex 1piece instant + 1pt a la fin)
+	Map<String, Set<ActionType>> actionTypes;
 	
 	/**
 	 * Actions par merveille
 	 * !! keys are in format NAME + SIDE 
 	 */
-	HashMap<String, Set<String>> wonderActions;
+	Map<String, List<String>> wonderActions;
 	
 	/**
 	 * Listes (par ere) des ensembles de cartes
 	 */
-	ArrayList<Set<Card>> cards; // Creer des cartes a partir des noms...
+	List<Set<String>> cards; // ?? -> Game ??
 	
 	/**
 	 * Liste des couts des cartes
 	 */
-	HashMap<Card, Cost> cost;
+	Map<String, Map<Ressource, Integer>> cost;
 	
 	/**
-	 * // Seuil de joueurs minimum
+	 * Seuil de joueurs minimum
 	 */
-	HashMap<Card, Integer> nbPlayerPerCard; // Voir si Card -> String
+	Map<String, Integer> nbPlayerPerCard;
 	
 	/**
-	 * @param r
-	 * @return le type de ressource que le String represente
+	 * Le type de carte de chaque carte
 	 */
-	public static Ressource toRessource(String r) {
-		
-		if(r.equals("CLAY")) return Ressource.CLAY;
-		else if(r.equals("FABRIC")) return Ressource.FABRIC;
-		else if(r.equals("GLASS")) return Ressource.GLASS;
-		else if(r.equals("ORE")) return Ressource.ORE;
-		else if(r.equals("PAPYRUS")) return Ressource.PAPYRUS;
-		else if(r.equals("STONE")) return Ressource.STONE;
-		else if(r.equals("WOOD")) return Ressource.WOOD;
-		else if(r.equals("SHIELD")) return Ressource.SHIELD;
-		else return Ressource.MONEY; 
-			
-	}
-	
+	Map<String, CardType> cardTypes;
+
 }

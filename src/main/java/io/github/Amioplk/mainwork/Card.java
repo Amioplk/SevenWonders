@@ -9,25 +9,35 @@ public class Card {
 	
 	private String name;
 	private CardType type;
-	private Action action;
 	private Set<ActionType> types;
 	Cost cost;
 	
-	// Ajouter l'ere ?
-	
-	public Card(String name, CardType type) {
-		this(name, type, null, null);
+	public Card() {
+		this("Default");
 	}
 	
-	public Card(String name, CardType type, Action action, Set<ActionType> types) {
+	public Card(String name) {
+		this.setName(name);
+		this.type = Game.frame.cardTypes.get(name);
+		this.types = Game.frame.actionTypes.get(name);
+	}
+	
+	public Card(String name, CardType type, Set<ActionType> types) {
 		this.setName(name);
 		this.setType(type);
-		this.setAction(action);
 		this.setTypes(types);
 	}
 	
-	void apply() {
+	void apply(Player user) {
 		
+		if(this.types.contains(ActionType.INSTANT)){
+			InstantAction instantAction = new InstantAction(user, this);
+			instantAction.apply();
+		}
+	}
+	
+	boolean containsActionType(ActionType at) {
+		return types.contains(at);
 	}
 	
 	/**
@@ -62,14 +72,6 @@ public class Card {
 		ToStringHelper string = MoreObjects.toStringHelper(this);
 		string.add(this.name, true);
 		return string.toString();
-	}
-
-	public Action getAction() {
-		return action;
-	}
-
-	public void setAction(Action action) {
-		this.action = action;
 	}
 
 	public Set<ActionType> getTypes() {

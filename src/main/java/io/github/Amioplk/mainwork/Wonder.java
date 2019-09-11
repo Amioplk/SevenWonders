@@ -5,28 +5,32 @@ import java.util.List;
 public class Wonder {
 	
 	
-	int full; // On fait un max qu'on decremente;
+	int max;
+	int index;
 	String name;
-	private List<Card> actions;
+	private List<String> actions;
 	char side;
+	private Card defaultAction;
 	
 	public Wonder() {}
 	
 	public Wonder(Frame frame, String name) {
-		this.side = (Math.random() > 1/2) ? 'A' : 'B'; // A ou B
+		this.side = (Math.random() > 1/2) ? 'A' : 'B';
 		this.name = name;
-		this.full = this.getSize(frame);
+		this.actions = frame.wonderActions.get(name + side);
+		this.max = actions.size();
+		this.index = 0;
 	}
 	
 	public boolean fullWonder() {
-		return full == 0;
+		return max == index;
 	}
 
-	public List<Card> getActions() {
+	public List<String> getActions() {
 		return actions;
 	}
 
-	public void setActions(List<Card> actions) {
+	public void setActions(List<String> actions) {
 		this.actions = actions;
 	}
 
@@ -39,11 +43,10 @@ public class Wonder {
 	}
 	
 	/**
-	 * @param frame
 	 * @return the index of the next action available on this Wonder
 	 */
-	public int getNextAvailable(Frame frame) {
-		return this.getSize(frame) - this.full;
+	public int getNextAvailable() {
+		return index;
 	}
 	
 }

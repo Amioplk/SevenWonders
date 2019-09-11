@@ -1,6 +1,6 @@
 package main.java.io.github.Amioplk.mainwork;
 
-public class SpecialAction extends Action implements Applyable {
+public class SpecialAction extends Action {
 	
 	Card card;
 	
